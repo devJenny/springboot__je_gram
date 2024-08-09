@@ -1,0 +1,37 @@
+server:
+  port: 8282
+  servlet:
+    context-path: /
+    encoding:
+      charset: utf-8
+      enabled: true
+
+spring:
+  config:
+    import: "classpath:application-secrets.yml"
+  datasource:
+    url: jdbc:mysql://localhost:3306/re_photogram?characterEncoding=UTF-8&allowMultiQueries=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 2MB
+  thymeleaf:
+    prefix=classpath: templates/
+    suffix: .html
+    check-template-location: true
+    cache: false
+    mvc:
+      static-path-pattern: "/static/**"
+
+#file:
+#  path: C:/workspace/springbootwork/upload/
