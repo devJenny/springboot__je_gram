@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<th:block th:replace="~{fragments/head :: common-head}"></th:block>
 
-<%@ include file="../layout/header.jsp"%>
+<body>
+
+<!-- Include Header -->
+<th:block th:replace="~{fragments/header :: header}"></th:block>
 
 <!--프로필 섹션-->
 <section class="profile">
@@ -17,7 +19,7 @@
 						id="userProfileImageInput" />
 				</form>
 
-				<img class="profile-image" src="#"
+				<img class="profile-image" th:src="@{#}"
 					onerror="this.src='/images/person.jpeg'" id="userProfileImage" />
 			</div>
 		</div>
@@ -37,9 +39,9 @@
 
 			<div class="subscribe">
 				<ul>
-					<li><a href=""> 게시물<span>3</span>
+					<li><a th:href=""> 게시물<span>3</span>
 					</a></li>
-					<li><a href="javascript:subscribeInfoModalOpen();"> 구독정보<span>2</span>
+					<li><a th:href="@{javascript:subscribeInfoModalOpen()}"> 구독정보<span>2</span>
 					</a></li>
 				</ul>
 			</div>
@@ -66,7 +68,7 @@
 
 
 				<div class="img-box">
-					<a href=""> <img src="/images/home.jpg" />
+					<a href=""> <img th:src="@{/images/home.jpg}" />
 					</a>
 					<div class="comment">
 						<a href="#" class=""> <i class="fas fa-heart"></i><span>0</span>
@@ -75,7 +77,7 @@
 				</div>
 
 				<div class="img-box">
-					<a href=""> <img src="/images/home.jpg" />
+					<a href=""> <img th:src="@{/images/home.jpg}" />
 					</a>
 					<div class="comment">
 						<a href="#" class=""> <i class="fas fa-heart"></i><span>0</span>
@@ -84,7 +86,7 @@
 				</div>
 
 				<div class="img-box">
-					<a href=""> <img src="/images/home.jpg" />
+					<a href=""> <img th:src="@{/images/home.jpg}" />
 					</a>
 					<div class="comment">
 						<a href="#" class=""> <i class="fas fa-heart"></i><span>0</span>
@@ -132,7 +134,7 @@
 
 			<div class="subscribe__item" id="subscribeModalItem-1">
 				<div class="subscribe__img">
-					<img src="#" onerror="this.src='/images/person.jpeg'"/>
+					<img th:src="@{#}" onerror="this.src='/images/person.jpeg'"/>
 				</div>
 				<div class="subscribe__text">
 					<h2>love</h2>
@@ -145,7 +147,7 @@
 
 			<div class="subscribe__item" id="subscribeModalItem-2">
 				<div class="subscribe__img">
-					<img src="#" onerror="this.src='/images/person.jpeg'"/>
+					<img th:src="@{#}" onerror="this.src='/images/person.jpeg'"/>
 				</div>
 				<div class="subscribe__text">
 					<h2>ssar</h2>
@@ -160,6 +162,9 @@
 </div>
 
 
-<script src="/js/profile.js"></script>
+<script th:src="@{/js/profile.js}"></script>
 
-<%@ include file="../layout/footer.jsp"%>
+<!-- Including footer -->
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+</body>

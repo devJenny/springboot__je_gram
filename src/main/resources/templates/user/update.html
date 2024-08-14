@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<th:block th:replace="~{fragments/head :: common-head}"></th:block>
 
-<%@ include file="../layout/header.jsp"%>
+<body>
+
+<!-- Include Header -->
+<th:block th:replace="~{fragments/header :: header}"></th:block>
 
 <!--프로필셋팅 메인-->
 <main class="main">
@@ -13,7 +15,7 @@
 			<!--프로필셋팅 아이디영역-->
 			<div class="content-item__01">
 				<div class="item__img">
-					<img src="#" onerror="this.src='/images/person.jpeg'" />
+					<img th:src="@{#}" onerror="this.src='/images/person.jpeg'" />
 				</div>
 				<div class="item__username">
 					<h2>TherePrograming</h2>
@@ -99,6 +101,9 @@
 	</section>
 </main>
 
-<script src="/js/update.js"></script>
+<script th:src="@{/js/update.js}"></script>
 
-<%@ include file="../layout/footer.jsp"%>
+<!-- Include Footer -->
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+
+</body>

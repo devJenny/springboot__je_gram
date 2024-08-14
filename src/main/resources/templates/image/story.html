@@ -1,6 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="../layout/header.jsp"%>
+<th:block th:replace="~{fragments/head :: common-head}"></th:block>
+
+<body>
+
+<th:block th:replace="~{fragments/header :: header}"></th:block>
 
 <main class="main">
 	<section class="container">
@@ -11,8 +13,8 @@
 			<div class="story-list__item">
 				<div class="sl__item__header">
 					<div>
-						<img class="profile-image" src="#"
-							onerror="this.src='/images/person.jpeg'" />
+						<img class="profile-image" src="#" />
+<!--							onerror="this.src='/images/person.jpeg'" />-->
 					</div>
 					<div>TherePrograming</div>
 				</div>
@@ -37,7 +39,7 @@
 
 					<div id="storyCommentList-1">
 
-						<div class="sl__item__contents__comment" id="storyCommentItem-1"">
+						<div class="sl__item__contents__comment" id="storyCommentItem-1">
 							<p>
 								<b>Lovely :</b> 부럽습니다.
 							</p>
@@ -61,6 +63,11 @@
 		</article>
 	</section>
 </main>
-<script src="/js/story.js"></script>
+
+<script th:src="@{/js/story.js}"></script>
+
+<!-- Include Footer -->
+<th:block th:replace="~{fragments/footer :: footer}"></th:block>
+
 </body>
-</html>
+
