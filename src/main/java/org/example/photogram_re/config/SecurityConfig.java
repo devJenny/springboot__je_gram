@@ -24,6 +24,9 @@ public class SecurityConfig {
                                 .loginProcessingUrl("/auth/signin") // post -> 스프링 시큐리티가 로그인 프로세스 진행
                                 .defaultSuccessUrl("/")
                 )
+                .csrf((csrfConfig) -> // csrf 비활성화
+                        csrfConfig.disable()
+                )
                 .build();
     }
 }
