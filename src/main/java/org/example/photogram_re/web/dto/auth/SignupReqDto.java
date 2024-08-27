@@ -1,6 +1,8 @@
 package org.example.photogram_re.web.dto.auth;
 
 import lombok.Data;
+import org.example.photogram_re.domain.user.User;
+
 
 @Data // Getter, Setter
 public class SignupReqDto {
@@ -8,4 +10,13 @@ public class SignupReqDto {
     private String password;
     private String email;
     private String name;
+
+    public User toEntity() {
+        return User.builder()
+                .username(username)
+                .password(password)
+                .email(email)
+                .name(name)
+                .build();
+    }
 }

@@ -2,16 +2,15 @@ package org.example.photogram_re.domain.user;
 
 //  JPA-Java persistence API (자바로 데이터를 영구적으로 저장(DB)할 수 있는 API를 제공
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -37,6 +36,7 @@ public class User {
 
     private LocalDateTime createdDate;
 
+    @PrePersist
     public void createdDate() {
         this.createdDate = LocalDateTime.now();
     }
