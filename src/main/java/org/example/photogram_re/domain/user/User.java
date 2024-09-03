@@ -21,6 +21,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // 번호 증가 전략이 DB를 따라감
     private Long id;
 
+    @Column(length = 20, unique = true)
     private String username;
     private String password;
 

@@ -10,6 +10,7 @@ public class SignupReqDto {
     private String password;
     private String email;
     private String name;
+    private String role;
 
     public User toEntity() {
         return User.builder()
@@ -17,6 +18,7 @@ public class SignupReqDto {
                 .password(password)
                 .email(email)
                 .name(name)
+                .role(role)
                 .build();
     }
 }
