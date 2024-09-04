@@ -3,6 +3,7 @@ package org.example.photogram_re.domain.user;
 //  JPA-Java persistence API (자바로 데이터를 영구적으로 저장(DB)할 수 있는 API를 제공
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -23,11 +24,14 @@ public class User {
 
     @Column(length = 20, unique = true)
     private String username;
+    @NotNull
     private String password;
 
+    @NotNull
     private String name;
     private String website;
     private String bio; // 자기 소개
+    @NotNull
     private String email;
     private String phone;
     private String gender;
