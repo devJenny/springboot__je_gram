@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class AuthController {
 
     // 회원가입버튼 -> /auth/signup -> /auth/signin
     @PostMapping("/auth/signup")
-    public String signup(@Valid SignupReqDto signupReqDto, BindingResult bindingResult) { // key=value (x-www-form-urlencoded)
+    public @ResponseBody String signup(@Valid SignupReqDto signupReqDto, BindingResult bindingResult) { // key=value (x-www-form-urlencoded)
 
         if (bindingResult.hasErrors()) {
             Map<String, String> errorMap = new HashMap<>();
@@ -43,12 +44,13 @@ public class AuthController {
                 errorMap.put(error.getField(), error.getDefaultMessage());
                 log.info("error.getDefaultMessage() = " + error.getDefaultMessage());
             }
+            return "오류남";
+        } else {
+            User join = authService.join(signupReqDto);
+            log.info("join: {}", join.toString());
+
+            return "auth/signin";
         }
-
-        User join = authService.join(signupReqDto);
-        log.info("join: {}", join.toString());
-
-        return "auth/signin";
     }
 
 }
